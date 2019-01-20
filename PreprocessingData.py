@@ -6,6 +6,8 @@ import numpy as np
 import cv2
 from math import ceil
 import matplotlib.pyplot as plt
+
+
 batch_size = 10
 nb_class = 2
 shuffle_data = True  # shuffle the addresses before saving
