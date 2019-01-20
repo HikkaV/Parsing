@@ -8,7 +8,6 @@ import numpy as np
 import scipy
 from PIL import Image
 from scipy import ndimage
-import NeuralNetwork
 import matplotlib.pyplot as plt
 import Helper
 from Helper import Helpers
@@ -25,7 +24,7 @@ class Filters(object):
     def define_car(self, x):
         if os.path.exists(x):
             image = np.array(ndimage.imread(x, flatten=False))
-            my_image = scipy.misc.imresize(image, size=(self.num_px, self.num_px)).reshape((1, num_px * num_px * 3)).T
+            my_image = scipy.misc.imresize(image, size=(self.num_px, self.num_px)).reshape((1, self.num_px * self.num_px * 3)).T
             my_predicted_image = NeuralNetwork.predict(self.w, self.b, my_image)
             value = np.squeeze(my_predicted_image)
             print(value)

@@ -14,20 +14,6 @@ from FIlterFunctions import Filters
 import Helper
 
 
-def download(x):
-    """This func downloads pics using their urls
-     this is one of the most fastest methods for downloading files,
-     as it uses caching
-    """
-    h = httplib2.Http('.cache')
-    name = re.sub('/', '', x)
-    response, content = h.request(x)
-    abs_path = path + '/' + name + '.jpg'
-    out = open(abs_path, 'wb')
-    out.write(content)
-    out.close()
-
-
 class Parser(object):
 
     def __init__(self, key, w, b, num_px, path, firstlen):
@@ -59,6 +45,19 @@ class Parser(object):
                 return projects
             last_height = new_height
 
+    def download(self, x):
+        """This func downloads pics using their urls
+         this is one of the most fastest methods for downloading files,
+         as it uses caching
+        """
+        h = httplib2.Http('.cache')
+        name = re.sub('/', '', x)
+        response, content = h.request(x)
+        abs_path = self.path + '/' + name + '.jpg'
+        out = open(abs_path, 'wb')
+        out.write(content)
+        out.close()
+
     def parse(self, url, max_workers=50):
         driver = webdriver.Chrome(executable_path='/home/hikkav/environments/chromedriver')
         driver.get(url)
@@ -68,10 +67,10 @@ class Parser(object):
 
             with concurrent.futures.ThreadPoolExecutor(max_workers) as e:
                 for i in urls:
-                    e.submit(download, i)
+                    e.submit(self.download, i)
                 tmp_list = [self.path + '/' + x for x in os.listdir(self.path)]
                 for z in tmp_list:
-                    e.submit(self.filters.find_duplicate_image(), z)
+                    e.submit(self.filters.find_duplicate_image, z)
                 path_list = [self.path + '/' + x for x in os.listdir(self.path)]
                 for v in path_list:
                     e.submit(self.filters.check_file_on_trbl, v)
