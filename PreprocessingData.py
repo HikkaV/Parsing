@@ -12,9 +12,9 @@ batch_size = 10
 nb_class = 2
 shuffle_data = True  # shuffle the addresses before saving
 hdf5_path = Settings.adress  # address to where you want to save the hdf5 file
-cat_dog_train_path = Settings.path_to_car
+cat_else_train_path = Settings.path_to_car
 # read addresses and labels from the 'train' folder
-addrs = glob.glob(cat_dog_train_path)
+addrs = glob.glob(cat_else_train_path)
 labels = [0 if 'car' in addr else 1 for addr in addrs]  # 0 = Car, 1 = else
 # to shuffle data
 if shuffle_data:
