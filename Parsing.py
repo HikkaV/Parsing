@@ -25,7 +25,7 @@ class Parser(object):
         self.filters = Filters(self.w, self.b, self.num_px)
         self.firstlen = firstlen
 
-    def gather_links(self, driver, SCROLL_PAUSE_TIME=2):
+    def gather_links(self, driver, SCROLL_PAUSE_TIME=1):
         global flag
         flag = False
         last_height = driver.execute_script("return document.body.scrollHeight")

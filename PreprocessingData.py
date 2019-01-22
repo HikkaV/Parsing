@@ -37,7 +37,7 @@ if data_order == 'th':
 elif data_order == 'tf':
     train_shape = (len(train_addrs), 224, 224, 3)
     test_shape = (len(test_addrs), 224, 224, 3)
-# open a hdf5 file and create earrays
+# open a hdf5 file and create arrays
 hdf5_file = h5py.File(hdf5_path, mode='w')
 hdf5_file.create_dataset("train_img", train_shape, np.int8)
 hdf5_file.create_dataset("test_img", test_shape, np.int8)

@@ -38,7 +38,7 @@ class Helpers:
 
     def load_nn(self, filename='/home/hikkav/environments/my_env/models.npz'):
         """
-            This function loads necessary parameters from npz file nad returns them
+            This function loads necessary parameters from npz file and returns them
             w -- weights
             b - biases
 

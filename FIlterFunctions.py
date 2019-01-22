@@ -22,6 +22,11 @@ class Filters(object):
         self.helpers = Helpers()
 
     def define_car(self, x):
+        """
+         The function that filters files while using a simple implementation
+         of Neural Network
+         removes files that due to it's logic aren't cars
+         """
         if os.path.exists(x):
             image = np.array(ndimage.imread(x, flatten=False))
             my_image = scipy.misc.imresize(image, size=(self.num_px, self.num_px)).reshape((1, self.num_px * self.num_px * 3)).T
@@ -50,6 +55,11 @@ class Filters(object):
         return True
 
     def find_duplicate_image(self, x):
+        """
+        The function searches for the same image in a folder , comparing pics dimensions , weight and quantity of pixels
+        deletes founded duplicates
+        :param x: the element of iterable collection
+        """
         tmp = x
         tmp_list.remove(x)
         for z in tmp_list:
@@ -61,6 +71,11 @@ class Filters(object):
                 break
 
     def check_im_size(self, x):
+        """
+
+        Checks images due to their size
+        invalid images are removed
+        """
         img = pygame.image.load(x)
         width = img.get_width()
         height = img.get_height()
@@ -70,11 +85,17 @@ class Filters(object):
                 os.remove(x)
 
     def delete_bad_links(self, projects):
+        """
+        deletes links containing inappropriate words and so on
+         """
         projects = (set(filter(self.helpers.func, projects)))
         projects = list(projects)
         return projects
 
     def check_file_on_trbl(self, x):
+        """
+        checks the image on troubles
+        """
         global im
         try:
             im = Image.open(x)
