@@ -3,14 +3,14 @@ import os.path
 from PIL import Image
 import imghdr
 import pygame
-import NeuralNetwork
+import neural_network
 import numpy as np
 import scipy
 from PIL import Image
 from scipy import ndimage
 import matplotlib.pyplot as plt
-import Helper
-from Helper import Helpers
+import helper
+from helper import Helpers
 
 
 class Filters(object):
@@ -72,7 +72,6 @@ class Filters(object):
 
     def check_im_size(self, x):
         """
-
         Checks images due to their size
         invalid images are removed
         """

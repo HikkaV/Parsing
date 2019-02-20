@@ -266,4 +266,4 @@ if flag:
     w, b = initialize_with_zeros(dim)
     w, b, X, Y = np.array([[1], [2]]), 2, np.array([[1, 2], [3, 4]]), np.array([[1, 0]])
     grads, cost = propagate(w, b, X, Y)
-    model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations=5000, learning_rate=0.9, print_cost=True)
+    model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations=20, learning_rate=0.9, print_cost=True)

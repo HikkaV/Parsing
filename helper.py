@@ -1,5 +1,5 @@
 from scipy.special import expit
-import Settings
+import settings
 import numpy as np
 import os
 import multiprocessing

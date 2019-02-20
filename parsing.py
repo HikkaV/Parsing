@@ -5,13 +5,13 @@ import httplib2
 import os
 import os.path
 import re
-import Settings
+import settings
 import concurrent.futures
 from concurrent.futures import ThreadPoolExecutor
 from selenium.common import exceptions
-import FIlterFunctions
-from FIlterFunctions import Filters
-import Helper
+import filter_functions
+from filter_functions import Filters
+import helper
 
 
 class Parser(object):

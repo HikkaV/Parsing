@@ -2,7 +2,7 @@
 import numpy as np
 import os
 import h5py
-import Settings
+import settings
 
 def load_dataset():
     train_dataset = h5py.File(Settings.adress, "r")

@@ -1,16 +1,16 @@
 import multiprocessing
 from multiprocessing import Pool
-import Helper
-from Helper import Helpers
-import Parsing
-from Parsing import Parser
-import Settings
+import helper
+from helper import Helpers
+import parsing
+from parsing import Parser
+import settings
 import os
 if __name__ == "__main__":
     helpers = Helpers()
     w, b, num_px = helpers.load_nn()
-    url = Settings.url
-    path = Settings.path
+    url = settings.url
+    path = settings.path
     key = int(input())
     helpers.make_dir(path)
     firstlen = len(os.listdir(path))
@@ -18,4 +18,3 @@ if __name__ == "__main__":
     pool = Pool(processes=helpers.define_sitesqua_to_parse())
     pool.map(parser.parse, url)
     print("The " + str(len(os.listdir(path)) - firstlen) + " pics were downloaded")
-
